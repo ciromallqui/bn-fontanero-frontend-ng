@@ -1,0 +1,152 @@
+<div class="bn-app">
+      <mat-toolbar class="toolbar">
+          <mat-toolbar-row class="header">
+            <img src="../../../assets/images/nombre.png" alt="">
+            <span class="spacer"></span>
+            <!-- <mat-icon>account_circle</mat-icon><span>Registrarme</span>|<span style="cursor: pointer;" (click)="onClickIngresar()">Ingresar</span> -->
+
+            <button class="perfil" mat-icon-button [matMenuTriggerFor]="menu" disableRipple>
+              <span>{{datosLogin.nombreCompleto}}</span>
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item class="out-none">
+                <mat-icon>account_box</mat-icon>
+                <span>Registrarse</span>
+              </button>
+              <button mat-menu-item class="out-none" (click)="onClickIngresar()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Ingresar</span>
+              </button>
+            </mat-menu>
+          </mat-toolbar-row>
+          <mat-toolbar-row style="height: 30px;">
+            <span class="spacer"></span>
+            <img style="width: 150px;" src="../../../assets/images/arrobaredes.png" alt="">
+          </mat-toolbar-row>
+          <mat-toolbar-row class="sosial">
+            <span class="spacer"></span>
+            <div>
+              <mat-icon (click)="facebook()" style="color: rgba(20, 52, 148, 0.864)">facebook</mat-icon>
+              <mat-icon (click)="youtube()" style="color: rgba(238, 20, 20, 0.864);">play_circle_filled</mat-icon>
+            </div>
+          </mat-toolbar-row>
+          <mat-toolbar-row class="menu">
+            <mat-icon>play_arrow</mat-icon><span style="cursor: pointer;" (click)="onClickCrearPlugIn(quienessomos)">¿Quienes Somos?</span>
+            <span class="spacer"></span>
+            <mat-icon>play_arrow</mat-icon><span  style="cursor: pointer;" (click)="onClickCrearPlugIn(catalogomaterial)">Catálogo de Materiales</span>
+            <img style="width: 220px; margin-left: 40px;" src="../../../assets/images/barraseguridad.png" alt="">
+          </mat-toolbar-row>
+      </mat-toolbar>
+      <img class="logo" src="../../../assets/images/personaje.png" alt="">
+      <div class="emergencia" (click)="onClickCrearPlugIn(emergencia)"><img src="../../../assets/images/emergencias.png" alt=""></div>
+
+      <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: 20px;">
+        <div fxFlex="200px">
+            <mat-card class="cardm" (click)="obtenerPlugins(datosLogin, 'SV')">
+            <img mat-card-image src="../../../assets/images/cajaherramientas.png" alt="">
+            <mat-card-content>Nuevos Servicios</mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="200px" *ngIf="casco">
+            <mat-card class="cardm" (click)="obtenerPlugins(datosLogin, 'TR')">
+            <img mat-card-image src="../../../assets/images/casco.png" alt="">
+            <mat-card-content>Trabaja Con Nosotros</mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="200px" *ngIf="cotizacion">
+            <mat-card class="cardm" (click)="obtenerPlugins(datosLogin, 'CT')">
+            <img mat-card-image src="../../../assets/images/calculadora.png" alt="">
+            <mat-card-content>Cotizaciones</mat-card-content>
+            </mat-card> 
+        </div>
+
+        <div fxFlex="calc(100% - 600px)">
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div fxFlex="120px">
+              <mat-card class="card-chat">
+                <img mat-card-image src="../../../assets/images/chatfontanero.png" alt="">
+                <mat-card-content>
+                <input class="form-control"  placeholder="Realiza tus consultas" type="text">
+                </mat-card-content>
+              </mat-card> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" class="body">
+      <mat-tab-group color="accent" backgroundColor="primary" [selectedIndex]="tabSeleccionado" class="bn-tab-group">
+        <mat-tab class="bn-mat-tab" *ngIf="tabprincipal">
+          <ng-template mat-tab-label>
+            {{nombreModulo}}
+            <mat-icon class="cerrar" (click)="cerrarTabPrincipal()">clear</mat-icon>
+          </ng-template>
+            <div fxLayout="column">
+              <mat-card class="p-main-card">
+                <mat-card-header>
+                    <mat-card-title></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+                      <div fxFlex="350px" fxFlex.md="350px" fxFlex.sm="100%" *ngFor="let plugin of  plugInsVisibles"
+                          (click)="onClickCrearPlugIn(plugin)">
+                          <mat-card class="plugin-card p-secondary-card">
+                            <div fxLayaout="column">
+                                <div fxLayout="row" fxLayoutGap="10px" class="bn-card-body">
+                                  <div fxFlex="75%">
+                                      <mat-card-header class="plugin-header">
+                                      <mat-card-title class="plugin-titulo">{{plugin.nombre}}</mat-card-title>
+                                      <mat-card-subtitle class="plugin-subtitulo">{{plugin.descripcion}}</mat-card-subtitle>
+                                      </mat-card-header>
+                                  </div>
+                                  <div fxFlex="25%" class="plugin-image">
+                                      <img mat-card-image [src]="plugin.imagen" [alt]="plugin.nombre">
+                                  </div>
+                                </div>
+                                <div class="xs-card-action p-button">
+                                  <div fxFlex="100%">
+                                      <mat-card-actions class="plugin-actions">
+                                      <button mat-button>EJECUTAR</button>
+                                      </mat-card-actions>
+                                  </div>
+                                </div>
+                            </div>
+                          </mat-card>
+                      </div>
+                    </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </mat-tab>
+
+        <mat-tab *ngFor="let plugin of plugInsEnEjecucion" class="bn-mat-tab">
+          <ng-template mat-tab-label>
+            {{plugin.nombre}}
+          <mat-icon class="cerrar" (click)="onClickCerrarPlugIn(plugin)">clear</mat-icon>
+          </ng-template>
+          <app-construccion *ngIf="plugin.componente == 'app-construccion'"></app-construccion>
+          <app-reparacion *ngIf="plugin.componente == 'app-reparacion'"></app-reparacion>
+          <app-mantenimiento *ngIf="plugin.componente == 'app-mantenimiento'"></app-mantenimiento>
+          <app-curriculum *ngIf="plugin.componente == 'app-curriculum'"></app-curriculum>
+          <app-cotizacion *ngIf="plugin.componente == 'app-cotizacion'"></app-cotizacion>
+          <app-historial-servicio *ngIf="plugin.componente == 'app-historial-servicio'"></app-historial-servicio>
+
+          <app-emergencia *ngIf="plugin.componente == 'app-emergencia'"></app-emergencia>
+          <app-catalogo-material *ngIf="plugin.componente == 'app-catalogo-material'"></app-catalogo-material>
+          <app-quienes-somos *ngIf="plugin.componente == 'app-quienes-somos'"></app-quienes-somos>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="before-footer">
+      Plomeros | Electricistas | Albañiles | Carpinteros | Pintores | Mecánicos
+    </div>
+    <div class="footer">
+      <img class="img" src="../../../assets/images/contactanos.jpg" alt="">
+      <img class="img" src="../../../assets/images/telefono.jpg" alt="">
+      <img class="img" src="../../../assets/images/correo.jpg" alt="">
+      <img class="img" src="../../../assets/images/direccion.jpg" alt="">
+      <img class="img" src="../../../assets/images/compartirweb.jpg" alt="">
+      <img class="descarga" mat-card-image src="../../../assets/images/descargaapp.png" alt="">
+    </div>
+  </div>

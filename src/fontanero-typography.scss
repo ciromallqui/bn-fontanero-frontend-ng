@@ -1,0 +1,20 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config($font-family: 'Poppins', $headline: mat-typography-level(32px, 48px, 700), $body-1: mat-typography-level(16px, 24px, 500));
+@include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+$oefa-color-a: (50: #e3e9f4, 100: #b9c9e5, 200: #8aa5d3, 300: #5b80c1, 400: #3765b4, 500: #144aa7, 600: #12439f, 700: #0e3a96, 800: #0b328c, 900: #06227c, A100: #aabaff, A200: #7790ff, A400: #4466ff, A700: #2b52ff, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #ffffff, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #ffffff, A700: #ffffff));
+$oefa-color-b: (50: #e4f0f7, 100: #bbdaec, 200: #8ec2df, 300: #61aad2, 400: #3f97c9, 500: #1d85bf, 600: #1a7db9, 700: #1572b1, 800: #1168a9, 900: #0a559b, A100: #c9e2ff, A200: #96c7ff, A400: #63acff, A700: #499fff, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
+$oefa-color-c: (50: #e2f8fb, 100: #b6eef6, 200: #85e3f0, 300: #54d8e9, 400: #30cfe5, 500: #0bc7e0, 600: #0ac1dc, 700: #08bad8, 800: #06b3d3, 900: #03a6cb, A100: #f3fdff, A200: #c0f2ff, A400: #8de7ff, A700: #74e2ff, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #000000, 600: #000000, 700: #000000, 800: #000000, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
+$oefa-color-d: (50: #e9f7f6, 100: #c7ece9, 200: #a2dfda, 300: #7cd2cb, 400: #60c9c0, 500: #44bfb5, 600: #3eb9ae, 700: #35b1a5, 800: #2da99d, 900: #1f9b8d, A100: #d5fffa, A200: #a2fff4, A400: #6fffee, A700: #56ffeb, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #000000, 600: #000000, 700: #000000, 800: #000000, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
+$oefa-color-e: (50: #f1f9e7, 100: #ddf0c4, 200: #c6e69d, 300: #afdc75, 400: #9dd558, 500: #8ccd3a, 600: #84c834, 700: #79c12c, 800: #6fba25, 900: #5cae18, A100: #efffe3, A200: #d1ffb0, A400: #b3ff7d, A700: #a4ff63, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #000000, 600: #000000, 700: #000000, 800: #000000, 900: #000000, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
+$oefa-color-f: (50: #ededed, 100: #d2d2d2, 200: #b4b5b5, 300: #969797, 400: #808080, 500: #696a6a, 600: #616262, 700: #565757, 800: #4c4d4d, 900: #3b3c3c, A100: #a0f5f5, A200: #72f0f0, A400: #30ffff, A700: #17ffff, contrast: (50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000));
+$oefa-app-primary: mat-palette($oefa-color-a);
+$oefa-app-accent: mat-palette($oefa-color-b);
+$oefa-app-warn: mat-palette($oefa-color-e);
+$oefa-app-theme: mat-light-theme($oefa-app-primary, $oefa-app-accent, $oefa-app-warn);
+@include angular-material-theme($oefa-app-theme);
+
+.bn-datatable .mat-progress-spinner circle {
+  stroke: mat-color($oefa-app-warn, 800) !important;
+}

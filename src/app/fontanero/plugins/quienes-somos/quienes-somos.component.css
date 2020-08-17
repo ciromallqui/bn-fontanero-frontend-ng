@@ -1,0 +1,4 @@
+.bn-content{
+    width: calc(100% - 25px);
+    margin: 10px;
+}
